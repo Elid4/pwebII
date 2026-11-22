@@ -9,7 +9,7 @@
 <p th:if="${mensagem != null}" th:text="${mensagem}"></p>
 
 <div class="amrita-form">
-    <form th:action="@{/consulta/save}" th:object="${consulta}" method="post">
+    <form novalidate th:action="@{/consulta/save}" th:object="${consulta}" method="post">
 
         <div th:if="${#fields.hasAnyErrors()}"
              class="amrita-error-box">
