@@ -13,11 +13,11 @@ public class Consulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Informe a data.")
+    @NotNull(message = "Informe a data.")
     @FutureOrPresent(message = "Coloque uma data válida")
     private LocalDate data;
 
-    @NotBlank(message = "Informe o valor.")
+    @NotNull(message = "Informe o valor.")
     @Positive(message = "A consulta tem que ter valor maior que 0")
     private Double valor;
 
@@ -25,12 +25,12 @@ public class Consulta {
 
     @ManyToOne
     @JoinColumn(name = "medico_id")
-    @NotBlank(message = "Selecione um médico.")
+    @NotNull(message = "Selecione um médico.")
     private Medico medico;
 
     @ManyToOne
     @JoinColumn(name = "paciente_id")
-    @NotBlank(message = "Selecione um paciente.")
+    @NotNull(message = "Selecione um paciente.")
     private Paciente paciente;
 
     //getters e setters
