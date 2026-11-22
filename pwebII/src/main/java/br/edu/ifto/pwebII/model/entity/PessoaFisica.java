@@ -49,7 +49,7 @@ public class PessoaFisica extends Pessoa {
 
     @AssertTrue(message = "A pessoa deve ter pelo menos 18 anos.")//testa se o metodo retorna true
     public boolean isMaiorDeIdade() {
-        return dataNascimento != null ||
+        return dataNascimento != null &&
                 !dataNascimento.isAfter(LocalDate.now().minusYears(18));
     }
 }
