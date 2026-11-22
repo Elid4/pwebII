@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+
+<head th:replace="~{fragments/head :: head('Clínica Amrita')}"></head>
+
+<body>
+<main class="amrita-home">
+
+    <section class="amrita-home-brand">
+
+        <div class="amrita-home-origin">
+
+            <span class="amrita-subtitle">A ORIGEM DO NOME</span>
+
+            <h1>Amrita</h1>
+
+            <h2>O néctar da imortalidade</h2>
+
+            <p>
+                Na tradição hindu, Amrita representa o néctar da imortalidade,
+                símbolo de vida, renovação e longevidade.
+            </p>
+
+            <p>
+                Inspirada nessa simbologia, nossa clínica carrega em seu nome
+                o desejo de valorizar a vida, promover o bem-estar e cultivar
+                o cuidado em cada atendimento.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- LADO ROXO -->
+    <section class="amrita-home-content">
+
+        <div class="amrita-home-welcome">
+
+            <span class="amrita-subtitle">CLÍNICA AMRITA</span>
+
+            <h1>Bem-vindo!</h1>
+
+            <h2>Cuidar é a nossa essência.</h2>
+
+            <p>
+                Cada detalhe importa quando o propósito é cuidar.
+                Organize os atendimentos, acompanhe os profissionais
+                e gerencie as informações da clínica em um só lugar.
+            </p>
+
+            <div class="amrita-home-access">
+
+                <h3>Explore o sistema</h3>
+
+                <a th:href="@{/paciente/list}" class="amrita-home-link">
+                    <i class="bi bi-people"></i>
+                    Pacientes
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <a th:href="@{/medico/list}" class="amrita-home-link">
+                    <i class="bi bi-person-badge"></i>
+                    Médicos
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <a th:href="@{/consulta/list}" class="amrita-home-link">
+                    <i class="bi bi-calendar2-heart"></i>
+                    Consultas
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </div>
+
+        <span class="amrita-home-footer">
+            CLÍNICA AMRITA · CUIDADO E LONGEVIDADE
+        </span>
+
+    </section>
+
+</main>
+</body>
+</html>
+

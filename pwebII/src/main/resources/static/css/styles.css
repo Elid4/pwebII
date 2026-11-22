@@ -1,0 +1,862 @@
+:root {
+    /* CORES PRINCIPAIS */
+    --amrita-purple: #49345F;
+    --amrita-purple-light: #72578C;
+    --amrita-purple-dark: #352442;
+
+    /* VERDE BOTÂNICO */
+    --amrita-green: #52745C;
+    --amrita-green-light: #75947A;
+    --amrita-green-dark: #3B5844;
+
+    /* DOURADO */
+    --amrita-gold: #C5A45D;
+    --amrita-gold-light: #DDC68E;
+    --amrita-gold-dark: #A88945;
+
+    /* FUNDOS */
+    --amrita-cream: #F6F1F7;
+    --amrita-white: #fffbf7;
+    --amrita-surface: #FBF9FC;
+
+    /* TEXTOS */
+    --amrita-text: #352D3B;
+    --amrita-muted: #81768A;
+    --amrita-text-light: #FFFFFF;
+
+    /* BORDAS */
+    --amrita-border: #E6DFE9;
+    --amrita-border-green: #DCE6DD;
+
+    /* ESTADOS */
+    --amrita-success: #52745C;
+    --amrita-danger: #B65353;
+    --amrita-warning: #C5A45D;
+    --amrita-info: #72578C;
+
+    /* SOMBRAS */
+    --amrita-shadow: 0 4px 18px rgba(73, 52, 95, 0.08);
+    --amrita-shadow-hover: 0 6px 22px rgba(73, 52, 95, 0.13);
+
+    /* BORDAS ARREDONDADAS */
+    --amrita-radius: 12px;
+    --amrita-radius-small: 7px;
+}
+
+
+/* CONFIGURAÇÕES GERAIS */
+
+* {
+    box-sizing: border-box;
+}
+
+
+html, body {
+    min-height: 100%;
+    margin: 0;
+    background-color: var(--amrita-cream);
+    color: var(--amrita-text);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+    max-width: none;
+}
+
+h1, h2, h3, h4, h5 {
+    color: var(--amrita-purple);
+    font-family: Georgia, serif;
+}
+
+h2 {
+    margin-bottom: 28px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--amrita-gold);
+}
+
+
+/* CABEÇALHO E NAVEGAÇÃO */
+
+.amrita-header,
+header.container {
+    background-color: var(--amrita-white);
+    border-bottom: 2px solid var(--amrita-gold);
+    box-shadow: var(--amrita-shadow);
+}
+
+
+
+.navbar-brand {
+    color: var(--amrita-purple) !important;
+    font-family: Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.navbar-brand:hover {
+    color: var(--amrita-green) !important;
+}
+
+.navbar .nav-link {
+    color: var(--amrita-text);
+    font-weight: 500;
+    margin: 0 5px;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active {
+    color: var(--amrita-green);
+}
+
+.navbar-toggler {
+    border-color: var(--amrita-green);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(82, 116, 92, 0.2);
+}
+
+
+/* CONTEÚDO PRINCIPAL */
+
+
+
+/* FORMULÁRIOS */
+
+.amrita-form {
+    background-color: var(--amrita-white);
+    border: 1px solid var(--amrita-border);
+    border-radius: var(--amrita-radius);
+    padding: 30px;
+    max-width: 750px;
+    box-shadow: var(--amrita-shadow);
+}
+
+.form-label {
+    color: var(--amrita-purple);
+    font-weight: 600;
+}
+
+.form-control,
+.form-select {
+    border: 1px solid var(--amrita-border);
+    border-radius: var(--amrita-radius-small);
+    padding: 10px 12px;
+    color: var(--amrita-text);
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--amrita-green);
+    box-shadow: 0 0 0 0.2rem rgba(82, 116, 92, 0.15);
+}
+
+.form-control::placeholder {
+    color: var(--amrita-muted);
+}
+
+
+/* BOTÕES */
+
+.btn-primary {
+    background-color: var(--amrita-purple);
+    border-color: var(--amrita-purple);
+    color: var(--amrita-white);
+}
+
+.btn-primary:hover {
+    background-color: var(--amrita-purple-dark);
+    border-color: var(--amrita-purple-dark);
+}
+
+.btn-success {
+    background-color: var(--amrita-green);
+    border-color: var(--amrita-green);
+}
+
+.btn-success:hover {
+    background-color: var(--amrita-green-dark);
+    border-color: var(--amrita-green-dark);
+}
+
+.btn-outline-success {
+    color: var(--amrita-green);
+    border-color: var(--amrita-green);
+}
+
+.btn-outline-success:hover {
+    background-color: var(--amrita-green);
+    border-color: var(--amrita-green);
+    color: var(--amrita-white);
+}
+
+.btn-outline-primary {
+    color: var(--amrita-purple);
+    border-color: var(--amrita-purple);
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--amrita-purple);
+    border-color: var(--amrita-purple);
+    color: var(--amrita-white);
+}
+
+
+/* TABELAS */
+
+.table {
+    background-color: var(--amrita-white);
+    color: var(--amrita-text);
+    border-radius: var(--amrita-radius);
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.table thead th {
+    background-color: var(--amrita-purple);
+    color: var(--amrita-white);
+    font-weight: 600;
+    padding: 14px;
+    border-color: var(--amrita-purple-light);
+}
+
+.table tbody td {
+    padding: 13px;
+    border-color: var(--amrita-border);
+}
+
+.table tbody tr:hover td {
+    background-color: var(--amrita-cream);
+}
+
+
+/* CARTÕES */
+
+.card {
+    background-color: var(--amrita-white);
+    border: 1px solid var(--amrita-border);
+    border-radius: var(--amrita-radius);
+    box-shadow: var(--amrita-shadow);
+}
+
+.card-header {
+    background-color: var(--amrita-purple);
+    color: var(--amrita-white);
+    border-bottom: 2px solid var(--amrita-gold);
+}
+
+
+/* ALERTAS E INDICADORES */
+
+.alert-success {
+    background-color: #EDF4EE;
+    color: var(--amrita-green-dark);
+    border-color: var(--amrita-border-green);
+}
+
+.alert-danger {
+    background-color: #F9EEEE;
+    color: var(--amrita-danger);
+    border-color: #EBCBCB;
+}
+
+.badge.bg-success {
+    background-color: var(--amrita-green) !important;
+}
+
+.badge.bg-primary {
+    background-color: var(--amrita-purple) !important;
+}
+
+
+/* LINKS */
+
+a {
+    color: var(--amrita-purple-light);
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--amrita-green);
+}
+
+
+/* RODAPÉ */
+
+footer {
+    background-color: var(--amrita-purple-dark);
+    color: var(--amrita-white);
+    padding: 22px;
+    text-align: center;
+    border-top: 3px solid var(--amrita-green);
+}
+
+footer a {
+    color: var(--amrita-gold-light);
+}
+
+footer a:hover {
+    color: var(--amrita-white);
+}
+
+/* amrita LINKS*/
+.amrita-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    background: var(--amrita-purple);
+    color: white;
+    text-decoration: none;
+
+    padding: 8px 18px;
+    border-radius: var(--amrita-radius-small);
+    border: 1px solid var(--amrita-purple);
+
+    margin-bottom: 5px;
+
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+
+.amrita-link:hover {
+    background: var(--amrita-purple-dark);
+    border-color: var(--amrita-purple-dark);
+    color: white;
+    box-shadow: var(--amrita-shadow);
+}
+
+.amrita-link i {
+    font-size: 16px;
+}
+
+
+/* RESPONSIVIDADE */
+
+
+
+    main {
+        margin: 25px auto;
+        padding: 0 16px;
+    }
+
+    .amrita-form {
+        padding: 20px;
+    }
+
+    .navbar {
+        padding: 12px 16px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    /* COMPUTADORES */
+    .navbar-brand img {
+        height: 35px;
+        width: auto;
+        max-width: 220px;
+        object-fit: contain;
+        display: block;
+    }
+
+/* BOTÕES DE AÇÃO */
+
+.amrita-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.amrita-actions .btn {
+    padding: 6px 14px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+/* EDITAR */
+.amrita-btn-edit {
+    background-color: var(--amrita-purple);
+    color: white;
+    border: 1px solid var(--amrita-purple);
+}
+
+.amrita-btn-edit:hover {
+    background-color: var(--amrita-purple-dark);
+    color: white;
+}
+
+/* EXCLUIR */
+.amrita-btn-delete {
+    background-color: transparent;
+    color: var(--amrita-danger);
+    border: 1px solid var(--amrita-danger);
+}
+
+.amrita-btn-delete:hover {
+    background-color: var(--amrita-danger);
+    color: white;
+}
+
+/* SALVAR */
+.amrita-btn-save {
+    background: var(--amrita-purple);
+    color: white;
+    border: 1px solid var(--amrita-purple);
+    border-radius: var(--amrita-radius-small);
+    padding: 8px 18px;
+    font-weight: 500;
+}
+
+.amrita-btn-save:hover {
+    background: var(--amrita-purple-dark);
+    border-color: var(--amrita-purple-dark);
+    color: white;
+}
+
+
+/* HOME */
+
+/* HOME */
+
+.amrita-home {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    width: 100%;
+    max-width: none;
+    min-height: 70vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* LADO BRANCO */
+
+.amrita-home-brand {
+    background: var(--amrita-white);
+    color: var(--amrita-text);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0px;
+}
+
+.amrita-home-origin {
+    width: 100%;
+    max-width: 520px;
+}
+
+.amrita-home-origin .amrita-subtitle {
+    color: var(--amrita-green);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.amrita-home-origin h1 {
+    color: var(--amrita-purple);
+    font-size: 4rem;
+    margin: 15px 0 5px;
+}
+
+.amrita-home-origin h2 {
+    color: var(--amrita-gold-dark);
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+.amrita-home-origin p {
+    color: var(--amrita-muted);
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+/* LADO ROXO */
+
+.amrita-home-content {
+    background: var(--amrita-purple);
+    color: var(--amrita-white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    padding: 0px;
+}
+
+.amrita-home-welcome {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.amrita-home-welcome .amrita-subtitle {
+    color: var(--amrita-gold-light);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+}
+
+.amrita-home-welcome h1 {
+    color: var(--amrita-white);
+    font-size: 3.5rem;
+    margin: 18px 0 10px;
+}
+
+.amrita-home-welcome h2 {
+    color: var(--amrita-gold-light);
+    font-size: 1.5rem;
+    font-weight: 500;
+    border: none;
+    padding: 0;
+}
+
+.amrita-home-welcome p {
+    color: var(--amrita-cream);
+    line-height: 1.9;
+    margin-bottom: 35px;
+}
+
+/* ACESSOS */
+
+.amrita-home-access h3 {
+    color: var(--amrita-white);
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+}
+
+.amrita-home-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 14px 18px;
+    margin-bottom: 12px;
+
+    color: var(--amrita-white);
+    text-decoration: none;
+
+    border: 1px solid var(--amrita-purple-light);
+    border-radius: var(--amrita-radius-small);
+
+    transition: 0.2s ease;
+}
+
+.amrita-home-link:hover {
+    background: var(--amrita-purple-light);
+    color: var(--amrita-gold-light);
+    transform: translateX(5px);
+}
+
+.amrita-home-link i:last-child {
+    margin-left: auto;
+}
+
+/* RODAPÉ DA HOME */
+
+.amrita-home-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    color: var(--amrita-purple-light);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+}
+
+.amrita-error-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+
+    padding: 16px 20px;
+    margin-bottom: 24px;
+
+    background: #F8F3FA;
+    border: 1px solid #DCCCE8;
+    border-left: 4px solid var(--amrita-purple);
+
+    border-radius: 10px;
+
+    color: var(--amrita-purple-dark);
+    font-size: 0.9rem;
+}
+
+.amrita-error-box > i {
+    font-size: 1.2rem;
+    color: var(--amrita-purple);
+    margin-top: 2px;
+}
+
+.amrita-error-box strong {
+    display: block;
+    margin-bottom: 8px;
+}
+
+.amrita-error-box ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.amrita-error-box li {
+    margin-bottom: 4px;
+}
+
+/* RESPONSIVIDADE DA HOME */
+
+@media (max-width: 900px) {
+    .amrita-home {
+        grid-template-columns: 1fr;
+    }
+
+    .amrita-home-brand,
+    .amrita-home-content {
+        min-height: 50vh;
+        padding: 40px 30px;
+    }
+
+    .amrita-home-origin h1 {
+        font-size: 3rem;
+    }
+
+    .amrita-home-welcome h1 {
+        font-size: 2.8rem;
+    }
+
+    .amrita-home-footer {
+        position: static;
+        margin-top: 30px;
+    }
+}
+
+/* FORMULÁRIOS AMRITA */
+
+.amrita-form {
+    background: var(--amrita-white);
+    max-width: 750px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 32px;
+    border: 1px solid var(--amrita-border);
+    border-radius: var(--amrita-radius);
+    box-shadow: var(--amrita-shadow);
+}
+
+.amrita-form h2 {
+    color: var(--amrita-purple);
+    margin-bottom: 28px;
+    font-weight: 600;
+}
+
+.amrita-form .form-label {
+    color: var(--amrita-text);
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.amrita-form .form-control,
+.amrita-form .form-select {
+    border: 1px solid var(--amrita-border);
+    border-radius: var(--amrita-radius-small);
+    padding: 11px 13px;
+    color: var(--amrita-text);
+    background-color: var(--amrita-surface);
+}
+
+.amrita-form .form-control:focus,
+.amrita-form .form-select:focus {
+    border-color: var(--amrita-purple-light);
+    box-shadow: 0 0 0 3px rgba(73, 52, 95, 0.12);
+}
+
+.amrita-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 28px;
+}
+/* th ação
+ */
+.td-acao {
+    text-align: center;
+}
+/*td ação*/
+.td-acao {
+    align-items: center;
+}
+/* ORGANIZAÇÃO DOS BOTÕES */
+.amrita-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+}
+
+/* ESTILO BASE */
+.amrita-action {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 17px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* EDITAR */
+.amrita-action.edit {
+    color: var(--amrita-purple);
+    background: #F1EAF5;
+    border: 1px solid #D9CBE2;
+}
+
+.amrita-action.edit:hover {
+    background: var(--amrita-purple);
+    color: white;
+}
+
+/* EXCLUIR */
+.amrita-action.delete {
+    color: var(--amrita-danger);
+    background: #FBECEC;
+    border: 1px solid #EBCACA;
+}
+
+.amrita-action.delete:hover {
+    background: var(--amrita-danger);
+    color: white;
+}
+
+/* VISUALIZAR */
+.amrita-action.view {
+    color: var(--amrita-green-dark);
+    background: #EAF1EB;
+    border: 1px solid #C8D9CA;
+}
+
+.amrita-action.view:hover {
+    background: var(--amrita-green);
+    color: white;
+}
+
+@media (max-width: 576px) {
+    .amrita-form {
+        padding: 20px 16px;
+    }
+
+    .amrita-form-actions {
+        flex-direction: column;
+    }
+
+    .amrita-form-actions .btn {
+        width: 100%;
+    }
+}
+
+
+/* AJUSTES PARA CELULARES */
+@media (max-width: 450px) {
+
+    /* FONTES */
+    body {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+
+    h3 {
+        font-size: 1.2rem;
+    }
+
+    p, label, th, td {
+        font-size: 13px;
+    }
+
+    /* BOTÕES */
+    .btn {
+        font-size: 11px;
+        padding: 5px 7px;
+        border-radius: 5px;
+    }
+
+
+    .amrita-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+    }
+
+    .amrita-actions .btn {
+        padding: 5px 7px;
+        font-size: 10px;
+        white-space: nowrap;
+    }
+
+    /* FORMULÁRIOS */
+    .amrita-form {
+        padding: 18px 14px;
+    }
+
+    .amrita-form .form-control,
+    .amrita-form .form-select {
+        font-size: 13px;
+        padding: 9px 10px;
+    }
+
+    .amrita-form .form-label {
+        font-size: 13px;
+    }
+
+    .amrita-form-actions {
+        gap: 8px;
+    }
+
+    /* TABELAS */
+    .amrita-table th,
+    .amrita-table td {
+        padding: 8px 6px;
+        font-size: 12px;
+        /*white-space: nowrap;*/
+        overflow-wrap: break-word;
+    }
+
+    .amrita-actions {
+        gap: 5px;
+    }
+
+    .amrita-action {
+        width: 25px;
+        height: 25px;
+        font-size: 10px;}
+}
