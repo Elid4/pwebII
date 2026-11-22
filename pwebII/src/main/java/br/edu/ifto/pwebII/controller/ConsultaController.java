@@ -33,7 +33,12 @@ public class ConsultaController {
                              BindingResult result,
                              RedirectAttributes attributes) {
         if (result.hasErrors()) {
-            return new ModelAndView("consulta/form");
+            ModelAndView mv = new ModelAndView("consulta/form");
+
+            mv.addObject("medicos", medicoRepository.medico());
+            mv.addObject("pacientes", pacienteRepository.pacientes());
+
+            return mv;
         }
         if (consulta.getId() == null) {
             repository.save(consulta);
