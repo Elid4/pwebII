@@ -32,6 +32,16 @@ public class ConsultaController {
     public ModelAndView save(@Valid @ModelAttribute("consulta") Consulta consulta,
                              BindingResult result,
                              RedirectAttributes attributes) {
+        if (consulta.getMedico() == null || consulta.getMedico().getId() == null) {
+            result.rejectValue("medico.id", "medico.obrigatorio",
+                    "Selecione um médico para a consulta");
+        }
+
+        if (consulta.getPaciente() == null || consulta.getPaciente().getId() == null) {
+            result.rejectValue("paciente.id", "paciente.obrigatorio",
+                    "Selecione um paciente para a consulta");
+        }
+
         if (result.hasErrors()) {
             ModelAndView mv = new ModelAndView("consulta/form");
 
