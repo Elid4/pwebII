@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}" xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:replace="~{fragments/head :: head('Clínica Amrita')}"></head>
 
@@ -53,21 +53,29 @@
 
                 <h3>Explore o sistema</h3>
 
-                <a th:href="@{/paciente/list}" class="amrita-home-link">
+                <a th:href="@{/paciente/list}" class="amrita-home-link" sec:authorize="hasAnyRole('SECRETARIO', 'ADMIN')">
                     <i class="bi bi-people"></i>
                     Pacientes
                     <i class="bi bi-arrow-right"></i>
                 </a>
 
-                <a th:href="@{/medico/list}" class="amrita-home-link">
+                <a th:href="@{/medico/list}" class="amrita-home-link" sec:authorize="hasAnyRole('SECRETARIO', 'ADMIN')">
                     <i class="bi bi-person-badge"></i>
                     Médicos
                     <i class="bi bi-arrow-right"></i>
                 </a>
 
-                <a th:href="@{/consulta/list}" class="amrita-home-link">
+                <a th:href="@{/consulta/list}" class="amrita-home-link" sec:authorize="isAuthenticated()">
                     <i class="bi bi-calendar2-heart"></i>
                     Consultas
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <a th:href="@{/login}"
+                   sec:authorize="!isAuthenticated()"
+                   class="amrita-home-link">
+                    <i class="bi bi-box-arrow-in-right"></i>
+                    Entrar
                     <i class="bi bi-arrow-right"></i>
                 </a>
 

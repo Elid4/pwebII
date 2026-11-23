@@ -1,20 +1,3 @@
-
--- =========================================
--- PERFIS
--- =========================================
-
-INSERT INTO perfil (id, nome) VALUES
-                                  (1, 'ADMIN'),
-                                  (2, 'SECRETARIO');
-
--- =========================================
--- PESSOAS
--- 1: Administrador
--- 2: Secretário
--- 3 a 7: Médicos
--- 8 a 12: Pacientes
--- =========================================
-
 INSERT INTO pessoa (id, email, telefone) VALUES
                                              (1, 'admin@amrita.com', '(63) 99999-0001'),
                                              (2, 'secretaria@amrita.com', '(63) 99999-0002'),
@@ -28,10 +11,6 @@ INSERT INTO pessoa (id, email, telefone) VALUES
                                              (10, 'pedro@email.com', '(63) 99999-0010'),
                                              (11, 'lucia@email.com', '(63) 99999-0011'),
                                              (12, 'rafael@email.com', '(63) 99999-0012');
-
--- =========================================
--- PESSOAS FÍSICAS
--- =========================================
 
 INSERT INTO pessoa_fisica
 (id_pessoa, nome, cpf, data_nascimento) VALUES
@@ -48,20 +27,12 @@ INSERT INTO pessoa_fisica
                                             (11, 'Lúcia Helena Ferreira', '12121212121', '1975-06-17'),
                                             (12, 'Rafael Gomes Pereira', '13131313131', '2000-10-09');
 
--- =========================================
--- MÉDICOS
--- =========================================
-
 INSERT INTO tb_medico (id_pessoa_fisica, crm) VALUES
-                                                  (3, 'CRM-TO 10001'),
-                                                  (4, 'CRM-TO 10002'),
-                                                  (5, 'CRM-TO 10003'),
-                                                  (6, 'CRM-TO 10004'),
-                                                  (7, 'CRM-TO 10005');
-
--- =========================================
--- PACIENTES
--- =========================================
+                                                  (3, 'CRM-TO 12345'),
+                                                  (4, 'CRM-TO 23456'),
+                                                  (5, 'CRM-TO 34567'),
+                                                  (6, 'CRM-TO 45678'),
+                                                  (7, 'CRM-TO 56789');
 
 INSERT INTO tb_paciente (id_pessoa_fisica) VALUES
                                                (8),
@@ -70,80 +41,64 @@ INSERT INTO tb_paciente (id_pessoa_fisica) VALUES
                                                (11),
                                                (12);
 
--- =========================================
--- USUÁRIOS
--- Cada usuário está associado a uma Pessoa.
--- =========================================
+INSERT INTO perfil (id, nome) VALUES
+                                  (1, 'ADMIN'),
+                                  (2, 'SECRETARIO'),
+                                  (3, 'MEDICO'),
+                                  (4, 'PACIENTE');
 
 INSERT INTO usuario
 (id, login, pessoa_id, password, ativo) VALUES
-                                            (1, 'admin', 1, 'senha-demo-admin', TRUE),
-                                            (2, 'secretario', 2, 'senha-demo-secretario', TRUE);
-
--- =========================================
--- PERFIS DOS USUÁRIOS
--- =========================================
+                                            (1, 'admin', 1, '$2y$12$ZdEPsKHJ/xYIe8.ZGa6FJeQjVG4br/Q0tEwVQ9b3S5K4An6snFjeW', TRUE),
+                                            (2, 'secretario', 2, '$2y$12$8bRZd9omIGxWBOAbM.fzt.Z5p.HWzUHnCtVK2.Yeksv8xSJqbEYMe', TRUE),
+                                            (3, 'ana.medica', 3, '$2y$12$vYh9OxuiGo.fEDMhTOA1M.pmzB11vdLktQrN1vmURk3aBpRperejm', TRUE),
+                                            (4, 'bruno.medico', 4, '$2y$12$1pnr4sIds4cF1ginyqXTQOWjEt2lwhPmNOukX.JX6zloru0nEkpmG', TRUE),
+                                            (5, 'carla.medica', 5, '$2y$12$neO5AwwCbwaebBR4Kwu5i./TXA348pjkV4CSW3KJ03tIW.B0Mi39G', TRUE),
+                                            (6, 'diego.medico', 6, '$2y$12$DNkAla3ro0w0sMx9V7zEuOnvGbHiR3Umq4XQTzu/jLqLyphhfoKUK', TRUE),
+                                            (7, 'elisa.medica', 7, '$2y$12$9V.z2xoQ8uczjLdlBBVvR.Gdlrgcc59QIk9qC5iR97HsUv.WNyQ4a', TRUE),
+                                            (8, 'joao', 8, '$2y$12$OqEUDftPwNNo/xQlBaIOFerEt6qJ6xfG2LyqbGAj/2w92vggQmL5C', TRUE),
+                                            (9, 'maria', 9, '$2y$12$m7vGw9Dx1sUSZXJKrcMaf.aO1tFsphsFsDoHVEz5OKNvwBNRqjblq', TRUE),
+                                            (10, 'pedro', 10, '$2y$12$ySJVDKte5JfTrl10zgXwdORlOq0ng4.QQ.t4lKTD7bbOe05z.qa.y', TRUE),
+                                            (11, 'lucia', 11, '$2y$12$tI02yyQfgA6DL7VvNAR0te6CemE1iDXzGNpEHqICRXg.pA6nHCmUO', TRUE),
+                                            (12, 'rafael', 12, '$2y$12$RDZkll7g0UgYuxCY3QgpyeI.MpPwfJ7q302hjyR2VFhOxXNWFCmBC', TRUE);
 
 INSERT INTO usuario_perfil (perfil_id, usuario_id) VALUES
                                                        (1, 1),
-                                                       (2, 2);
+                                                       (2, 2),
+                                                       (3, 3),
+                                                       (3, 4),
+                                                       (3, 5),
+                                                       (3, 6),
+                                                       (3, 7),
+                                                       (4, 8),
+                                                       (4, 9),
+                                                       (4, 10),
+                                                       (4, 11),
+                                                       (4, 12);
 
--- =========================================
--- CONSULTAS
--- 4 médicos diferentes por paciente
--- =========================================
-
--- João Pedro
 INSERT INTO tb_consulta
 (id, data, valor, observacao, medico_id, paciente_id) VALUES
-                                                          (1, '2026-10-01', 180.00, 'Consulta de rotina', 3, 8),
-                                                          (2, '2026-10-08', 200.00, 'Avaliação clínica', 4, 8),
-                                                          (3, '2026-10-15', 160.00, 'Retorno médico', 5, 8),
-                                                          (4, '2026-10-22', 190.00, 'Avaliação de exames', 6, 8);
+                                                          (1, '2026-10-01', 200.00, 'Consulta inicial e avaliação clínica.', 3, 8),
+                                                          (2, '2026-10-15', 180.00, 'Retorno para avaliação dos exames.', 4, 8),
+                                                          (3, '2026-11-01', 200.00, 'Acompanhamento do tratamento.', 5, 8),
+                                                          (4, '2026-11-15', 180.00, 'Reavaliação clínica.', 6, 8),
 
--- Maria Eduarda
-INSERT INTO tb_consulta
-(id, data, valor, observacao, medico_id, paciente_id) VALUES
-                                                          (5, '2026-10-02', 180.00, 'Consulta inicial', 4, 9),
-                                                          (6, '2026-10-09', 200.00, 'Avaliação clínica', 5, 9),
-                                                          (7, '2026-10-16', 160.00, 'Acompanhamento', 6, 9),
-                                                          (8, '2026-10-23', 190.00, 'Retorno médico', 7, 9);
+                                                          (5, '2026-10-02', 200.00, 'Consulta de rotina.', 4, 9),
+                                                          (6, '2026-10-16', 180.00, 'Avaliação dos resultados dos exames.', 5, 9),
+                                                          (7, '2026-11-02', 200.00, 'Acompanhamento médico.', 6, 9),
+                                                          (8, '2026-11-16', 180.00, 'Consulta de retorno.', 7, 9),
 
--- Pedro Augusto
-INSERT INTO tb_consulta
-(id, data, valor, observacao, medico_id, paciente_id) VALUES
-                                                          (9, '2026-10-03', 180.00, 'Consulta de rotina', 3, 10),
-                                                          (10, '2026-10-10', 200.00, 'Avaliação clínica', 5, 10),
-                                                          (11, '2026-10-17', 160.00, 'Retorno médico', 6, 10),
-                                                          (12, '2026-10-24', 190.00, 'Análise de exames', 7, 10);
+                                                          (9, '2026-10-03', 200.00, 'Avaliação inicial do paciente.', 5, 10),
+                                                          (10, '2026-10-17', 180.00, 'Retorno para acompanhamento.', 6, 10),
+                                                          (11, '2026-11-03', 200.00, 'Avaliação clínica periódica.', 7, 10),
+                                                          (12, '2026-11-17', 180.00, 'Revisão do tratamento.', 3, 10),
 
--- Lúcia Helena
-INSERT INTO tb_consulta
-(id, data, valor, observacao, medico_id, paciente_id) VALUES
-                                                          (13, '2026-10-04', 180.00, 'Consulta inicial', 3, 11),
-                                                          (14, '2026-10-11', 200.00, 'Avaliação clínica', 4, 11),
-                                                          (15, '2026-10-18', 160.00, 'Acompanhamento', 6, 11),
-                                                          (16, '2026-10-25', 190.00, 'Retorno médico', 7, 11);
+                                                          (13, '2026-10-04', 200.00, 'Consulta de avaliação geral.', 6, 11),
+                                                          (14, '2026-10-18', 180.00, 'Acompanhamento dos sintomas.', 7, 11),
+                                                          (15, '2026-11-04', 200.00, 'Retorno para avaliação clínica.', 3, 11),
+                                                          (16, '2026-11-18', 180.00, 'Consulta de acompanhamento.', 4, 11),
 
--- Rafael Gomes
-INSERT INTO tb_consulta
-(id, data, valor, observacao, medico_id, paciente_id) VALUES
-                                                          (17, '2026-10-05', 180.00, 'Consulta de rotina', 3, 12),
-                                                          (18, '2026-10-12', 200.00, 'Avaliação clínica', 4, 12),
-                                                          (19, '2026-10-19', 160.00, 'Retorno médico', 5, 12),
-                                                          (20, '2026-10-26', 190.00, 'Avaliação de exames', 7, 12);
-
-INSERT INTO usuario
-(id, login, pessoa_id, password, ativo) VALUES
-
-                                            (3, 'ana.medica', 3, 'senha-demo-ana', TRUE),
-                                            (4, 'bruno.medico', 4, 'senha-demo-bruno', TRUE),
-                                            (5, 'carla.medica', 5, 'senha-demo-carla', TRUE),
-                                            (6, 'diego.medico', 6, 'senha-demo-diego', TRUE),
-                                            (7, 'elisa.medica', 7, 'senha-demo-elisa', TRUE),
-
-                                            (8, 'joao', 8, 'senha-demo-joao', TRUE),
-                                            (9, 'maria', 9, 'senha-demo-maria', TRUE),
-                                            (10, 'pedro', 10, 'senha-demo-pedro', TRUE),
-                                            (11, 'lucia', 11, 'senha-demo-lucia', TRUE),
-                                            (12, 'rafael', 12, 'senha-demo-rafael', TRUE);
+                                                          (17, '2026-10-05', 200.00, 'Primeira consulta e anamnese.', 7, 12),
+                                                          (18, '2026-10-19', 180.00, 'Avaliação dos exames apresentados.', 3, 12),
+                                                          (19, '2026-11-05', 200.00, 'Acompanhamento do paciente.', 4, 12),
+                                                          (20, '2026-11-19', 180.00, 'Consulta de retorno.', 5, 12);

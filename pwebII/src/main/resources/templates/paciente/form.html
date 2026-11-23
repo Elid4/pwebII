@@ -57,6 +57,17 @@
                    class="form-control"
                    placeholder="(63) 99999-9999">
         </div>
+
+        <div class="mb-3">
+            <label for="login" class="form-label">Login:</label>
+            <input type="text" id="login" name="login" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="senha" class="form-label">Senha:</label>
+            <input type="password" id="senha" name="senha" class="form-control" required>
+        </div>
+
         <div class="amrita-form-actions">
             <button type="submit" class="btn amrita-btn-save">Salvar</button>
             <a th:href="@{/paciente/list}" class="btn amrita-btn-delete ">Cancelar</a>
