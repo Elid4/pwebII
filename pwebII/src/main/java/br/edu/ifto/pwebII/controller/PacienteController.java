@@ -19,9 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import br.edu.ifto.pwebII.model.entity.Usuario;
-import br.edu.ifto.pwebII.model.jdbc.repository.UsuarioRepository;
-import br.edu.ifto.pwebII.model.jdbc.repository.PerfilRepository;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Transactional
@@ -61,6 +58,16 @@ public class PacienteController {
                             "CPF já cadastrado.");
         }
 
+        if (login == null || login.isBlank()) {
+            result.reject("login.obrigatorio", "Informe o login.");
+        } else if (usuarioRepository.findByLogin(login).isPresent()) {
+            result.reject("login.duplicado", "Esse login já está cadastrado.");
+        }
+
+        if (senha == null || senha.isBlank()) {
+            result.reject("senha.obrigatoria", "Informe a senha.");
+        }
+
         if (result.hasErrors()) {
             ModelAndView mv = new ModelAndView("paciente/form");
             mv.addObject("paciente", paciente);
@@ -78,7 +85,6 @@ public class PacienteController {
             usuario.adicionarPerfil(perfilRepository.findByNome("PACIENTE"));
 
             usuarioRepository.save(usuario);
-            repository.save(paciente);
         } else {
             repository.update(paciente);
         }

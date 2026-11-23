@@ -3,16 +3,14 @@ package br.edu.ifto.pwebII.controller;
 import br.edu.ifto.pwebII.model.entity.Medico;
 import br.edu.ifto.pwebII.model.jdbc.repository.MedicoRepository;
 import br.edu.ifto.pwebII.model.jdbc.repository.PessoaFisicaRepository;
+import br.edu.ifto.pwebII.model.jdbc.repository.UsuarioRepository;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -27,11 +25,16 @@ public class MedicoController {
     MedicoRepository repository;
     @Autowired
     PessoaFisicaRepository pfRepository;
+    @Autowired
+    UsuarioRepository usuarioRepository;
 
     @PostMapping("/save")
-    public ModelAndView save(@Valid @ModelAttribute("medico") Medico medico,
+    public ModelAndView save(@Valid
+                             @ModelAttribute("medico") Medico medico,
                              BindingResult result,
-                             RedirectAttributes attributes) {
+                             RedirectAttributes attributes,
+                             @RequestParam(required = false) String login,
+                             @RequestParam(required = false) String senha) {
         if (pfRepository.cpfExiste(
                 medico.getCpf(),
                 medico.getId())) {
@@ -40,6 +43,16 @@ public class MedicoController {
                     "cpf.duplicado",
                     "CPF já cadastrado.");
         }
+        if (login == null || login.isBlank()) {
+            result.reject("login.obrigatorio", "Informe o login.");
+        } else if (usuarioRepository.findByLogin(login).isPresent()) {
+            result.reject("login.duplicado", "Esse login já está cadastrado.");
+        }
+
+        if (senha == null || senha.isBlank()) {
+            result.reject("senha.obrigatoria", "Informe a senha.");
+        }
+
 
         for (Medico m : repository.medico()) {
             if(medico.getCrm() != null){
