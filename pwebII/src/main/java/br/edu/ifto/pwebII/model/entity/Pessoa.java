@@ -21,6 +21,9 @@ public abstract class Pessoa {
     @NotBlank(message = "Digite um telefone válido")
     private String telefone;
 
+    @OneToOne(mappedBy = "pessoa")
+    private Usuario usuario;
+
     public Long getId() {
         return id; }
     public void setId(Long id) {
@@ -35,5 +38,12 @@ public abstract class Pessoa {
         return telefone; }
     public void setTelefone(String telefone) {
         this.telefone = telefone; }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
 
 }
