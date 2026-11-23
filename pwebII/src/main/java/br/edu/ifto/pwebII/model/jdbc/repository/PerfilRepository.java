@@ -40,4 +40,13 @@ public class PerfilRepository {
     public List<Perfil> perfil() {
         return em.createQuery("from Perfil").getResultList();
     }
+
+    //buscar por nome
+    public Perfil findByNome(String nome) {
+        return em.createQuery(
+                        "SELECT p FROM Perfil p WHERE p.nome = :nome",
+                        Perfil.class
+                ).setParameter("nome", nome)
+                .getSingleResult();
+    }
 }
