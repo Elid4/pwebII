@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html th:replace="~{fragments/layout :: layout(~{::head},~{::main})}">
+<head th:replace="~{fragments/head :: head('Consultas | Amrita')}"></head>
+
+<body>
+<main>
+<h2>Consultas</h2>
+
+<a th:href="@{/consulta/form}" class="amrita-link">
+    <i class="bi bi-plus-lg"></i>
+    Nova Consulta
+</a>
+
+    <div class="table-responsive">
+        <table class="table table-hover align-middle amrita-table">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Data</th>
+                <th>Médico</th>
+                <th>Paciente</th>
+                <th>Valor</th>
+                <th>Observação</th>
+                <th class="td-acao">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="c : ${consultas}">
+                <td th:text="${c.id}"></td>
+                <td th:text="${c.data}"></td>
+                <td th:text="${c.medico != null ? c.medico.nome : ''}"></td>
+                <td th:text="${c.paciente != null ? c.paciente.nome : ''}"></td>
+                <td th:text="${c.valor}"></td>
+                <td th:text="${c.observacao}"></td>
+                <td class="td-acao"> <a th:href="@{/consulta/form(id=${c.id})}"  class="btn amrita-btn-edit">Editar</a>
+                 <a onclick="return window.confirm('Tem certeza que deseja excluir este registro?')"
+                       th:href="@{/consulta/remove(id=${c.id})}" class="btn amrita-btn-delete">Excluir</a></td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+</body>
+</html>
