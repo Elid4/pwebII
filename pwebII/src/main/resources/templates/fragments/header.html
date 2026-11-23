@@ -1,4 +1,4 @@
-<header class="container-fluid p-0" th:fragment="header">
+<header class="container-fluid p-0" th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
 
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
         <div class="container-fluid">
@@ -23,7 +23,7 @@
 
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <li class="nav-item">
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a class="nav-link active"
                            aria-current="page"
                            th:href="@{/}">
@@ -32,20 +32,20 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link"
+                        <a class="nav-link" sec:authorize="hasAnyRole('SECRETARIO', 'ADMIN')"
                            th:href="@{/paciente/list}">
                             Pacientes
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" sec:authorize="hasAnyRole('SECRETARIO', 'ADMIN')">
                         <a class="nav-link"
                            th:href="@{/medico/list}">
                             Médicos
                         </a>
                     </li>
 
-                    <li class="nav-item">
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
                         <a class="nav-link"
                            th:href="@{/consulta/list}">
                             Consultas
@@ -54,17 +54,21 @@
 
                 </ul>
 
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2"
-                           type="search"
-                           placeholder="Pesquisar"
-                           aria-label="Pesquisar">
+                <div class="d-flex align-items-center gap-4">
 
-                    <button class="btn btn-outline-success"
-                            type="submit">
-                        Pesquisar
-                    </button>
-                </form>
+                    <span sec:authorize="isAuthenticated()">
+                        Olá, <strong sec:authentication="name">usuário</strong>
+                    </span>
+
+                    <form th:action="@{/logout}" method="post"
+                          sec:authorize="isAuthenticated()">
+                        <button type="submit" class="amrita-link">
+                            <i class="bi bi-box-arrow-right"></i>
+                            Sair
+                        </button>
+                    </form>
+
+                </div>
 
             </div>
         </div>
