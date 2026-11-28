@@ -23,6 +23,7 @@
         <th>E-mail</th>
         <th>Telefone</th>
         <th>CRM</th>
+        <th>Especialidade</th>
         <th class="td-acao">Ações</th>
     </tr>
     </thead>
@@ -35,6 +36,7 @@
         <td th:text="${m.email}"></td>
         <td th:text="${m.telefone}"></td>
         <td th:text="${m.crm}"></td>
+        <td th:text="${m.especialidade}"></td>
 <td class="td-acao">
     <div class="amrita-actions">
             <a th:href="@{/medico/form(id=${m.id})}"

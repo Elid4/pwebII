@@ -15,6 +15,9 @@ public class Medico extends PessoaFisica{
     @NotBlank(message = "Digite o CRM")
     private String crm;
 
+    @NotBlank(message = "Digite a especialidade")
+    private String especialidade;
+
     @OneToMany(mappedBy = "medico", cascade = CascadeType.REMOVE)
     private List<Consulta> consultas;
 
@@ -25,6 +28,13 @@ public class Medico extends PessoaFisica{
     }
     public void setCrm(String crm) {
         this.crm = crm;
+    }
+
+    public String getEspecialidade() {
+        return especialidade;
+    }
+    public void setEspecialidade(String especialidade) {
+        this.especialidade = especialidade;
     }
 
 }
