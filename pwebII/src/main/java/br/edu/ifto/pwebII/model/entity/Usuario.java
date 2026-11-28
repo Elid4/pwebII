@@ -17,8 +17,7 @@ public class Usuario {
     @Column(name = "login", nullable = false, unique = true)
     private String login;
 
-    @OneToOne
-    @JoinColumn(name = "pessoa_id")
+    @OneToOne(mappedBy = "usuario")
     private Pessoa pessoa;
 
     @NotBlank

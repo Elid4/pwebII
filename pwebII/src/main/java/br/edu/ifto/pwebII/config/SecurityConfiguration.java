@@ -33,9 +33,6 @@ public class SecurityConfiguration {
                         // Listar: somente ADMIN e SECRETARIO
                         .requestMatchers(HttpMethod.GET, "/paciente/list").hasAnyRole("ADMIN", "SECRETARIO")
 
-                        // Formulário: ADMIN, SECRETARIO e MEDICO
-                        .requestMatchers(HttpMethod.GET, "/paciente/form").hasAnyRole("ADMIN", "SECRETARIO", "MEDICO")
-
                         // MÉDICO
                         .requestMatchers(HttpMethod.GET, "/medico/form").hasAnyRole("ADMIN", "SECRETARIO")
                         .requestMatchers(HttpMethod.POST, "/medico/save").hasAnyRole("ADMIN", "SECRETARIO")

@@ -21,7 +21,8 @@ public abstract class Pessoa {
     @NotBlank(message = "Digite um telefone válido")
     private String telefone;
 
-    @OneToOne(mappedBy = "pessoa")
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     public Long getId() {
